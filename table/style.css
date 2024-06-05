@@ -1,0 +1,44 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .adaptive-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .adaptive-table th,
+  .adaptive-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .adaptive-table th {
+    background-color: #f2f2f2;
+    font-weight: 700;
+  }
+  
+  @media (max-width: 768px) {
+    .adaptive-table thead {
+      display: none;
+    }
+  
+    .adaptive-table tr {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .adaptive-table td {
+      display: block;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .adaptive-table td::before {
+      content: attr(data-label);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+  
