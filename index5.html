@@ -1,0 +1,64 @@
+<div class="image-container">
+	<img src="photo.jpg" alt="Изображение">
+	<div class="image-overlay">
+	  <h2>Название изображения</h2>
+	  <p>Это пример текста, который отображается при наведении на изображение.</p>
+	</div>
+  </div>
+  
+  <style>
+  .image-container {
+	position: relative;
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	overflow: hidden;
+	transform: translateY(100px);
+  }
+  
+  .image-container img {
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: all 0.3s ease-out;
+  }
+  
+  .image-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	opacity: 0;
+	transition: all 0.3s ease-out;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 20px;
+  }
+  
+  .image-container:hover img {
+	transform: scale(1.1);
+	filter: blur(5px);
+  }
+  
+  .image-container:hover .image-overlay {
+	opacity: 1;
+  }
+  
+  .image-overlay h2 {
+	font-size: 2em;
+	margin-bottom: 10px;
+  }
+  
+  .image-overlay p {
+	font-size: 1.2em;
+	line-height: 1.5;
+  }
+  
+  </style>
+  
