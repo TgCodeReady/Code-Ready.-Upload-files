@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="open-modal">Форма обратной связи</button>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form action="#">
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      <label for="message">Сообщение:</label>
+      <textarea id="message" name="message"></textarea>
+      <input type="submit" value="Отправить">
+    </form>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
