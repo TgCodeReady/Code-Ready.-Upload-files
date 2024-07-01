@@ -1,45 +1,33 @@
-const dropZone = document.querySelector('.drop-zone');
-const fileInput = document.querySelector('.file-input');
-const previewContainer = document.querySelector('.preview-container');
-const noFiles = document.querySelector('.no-files');
-dropZone.addEventListener('dragover', (event) => {
-    event.preventDefault();
-    dropZone.style.borderColor = '#4caf50';
-});
-dropZone.addEventListener('dragleave', () => {
-    dropZone.style.borderColor = '#ccc';
-});
-dropZone.addEventListener('drop', (event) => {
-    event.preventDefault();
-    dropZone.style.borderColor = '#ccc';
-    fileInput.files = event.dataTransfer.files;
-    displayPreview();
-});
-dropZone.addEventListener('click', () => {
-    fileInput.click();
-});
-fileInput.addEventListener('change', () => {
-    displayPreview();
-});
-function displayPreview() {
-    previewContainer.innerHTML = '';
-    noFiles.style.display = 'none';
+document.addEventListener('DOMContentLoaded', () => {
+    const addTaskBtn = document.getElementById('add-task-btn');
+    const taskInput = document.getElementById('new-task');
+    const taskList = document.getElementById('task-list');
 
-    if (fileInput.files.length > 0) {
-        Array.from(fileInput.files).forEach((file) => {
-            const reader = new FileReader();
+    addTaskBtn.addEventListener('click', () => {
+        const taskText = taskInput.value.trim();
+        if (taskText !== '') {
+            const listItem = document.createElement('li');
 
-            reader.onload = (event) => {
-                const img = document.createElement('img');
-                img.src = event.target.result;
-                img.classList.add('preview-img');
-                previewContainer.appendChild(img);
-            };
-            if (file.type.startsWith('image/')) {
-                reader.readAsDataURL(file);
-            }
-        });
-    } else {
-        noFiles.style.display = 'block';
-    }
-}
+            const taskSpan = document.createElement('span');
+            taskSpan.textContent = taskText;
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.classList.add('delete-btn');
+            deleteBtn.addEventListener('click', () => {
+                listItem.style.animation = 'fadeOut 0.5s forwards';
+                listItem.addEventListener('animationend', () => {
+                    taskList.removeChild(listItem);
+                });
+            });
+
+            listItem.appendChild(taskSpan);
+            listItem.appendChild(deleteBtn);
+            taskList.appendChild(listItem);
+
+            taskInput.value = '';
+            taskInput.focus();
+        }
+    });
+});
+
